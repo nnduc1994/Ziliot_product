@@ -1,0 +1,50 @@
+{% extends "custom_base.html" %}
+
+{% block page_content %}
+
+<div class="container">
+	
+	<div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-8">
+				            <h2 class="post_h3"> Post jobs or vaccancy</h2>
+				            <form action="/create" method=post>
+            <div style="display:none;"><input id="csrf_token" name="csrf_token" type="hidden" value="1426156027##6523990906bf2e5cb348109a884d5590e7185614"></div>
+
+            
+            <div class="div_input2">
+
+            <h4>Company Name:</h4 >
+            <input type="text" id="job_input2" name="company_name" />
+
+            <h4>Job Title:</h4>
+            <input type="text" id="job_input2" name="title" />
+
+            <h4>Location:</h4>
+            <input type="text" id="job_input2" name="location"/>
+
+            <h4>Link (enter the link to your job page):</h4>
+            <input type="text" id="job_input2" name="link" />
+
+            <h4>Description( briefly about job):</h4>
+            <textarea id="job_input2" name="description" style="height: 130px;" ></textarea>
+
+            <h4>Expire Day (MM/DD/YYYY):</h4>
+            <input type="date" id="job_input2" name="expire_day" />
+             <br/>
+                <button type="submit" class="btn btn-default">Create Job</button>
+            </div>
+
+        </form>
+            </div>
+            <div class="col-xs-2">
+           </div>
+
+
+            
+    </div>
+    </div>
+
+
+{% endblock %}

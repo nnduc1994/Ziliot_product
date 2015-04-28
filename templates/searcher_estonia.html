@@ -1,0 +1,71 @@
+{% extends "custom_base.html" %}
+
+{% block title %} ziliot jobs {{ username }} {% endblock %}
+
+
+{% block page_content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/local.css') }}">
+<div class="container">
+	
+	<div class="row search_jobs">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-8">
+				            <h1>Leia Tööpakkumised siit! </h1>
+            </div>
+            <div class="col-xs-2">
+           </div>
+      	</div>
+	<div class="row">
+    
+			
+<div class="col-xs-2">
+            </div>
+<div class="col-xs-3">
+				<form action = "" method=post>
+				<div id="div_input1" class="div_input1">
+					<label for="job_input">Mis? </label>
+					<br />
+					<input type="text" id="job_input" name="title" />
+					<span id="input_help">nt. töö, firma pealkiri kus?</span>
+				</div>
+	</div>
+<div class="col-xs-3">
+
+	
+				<div class="div_input1">
+					<label for="where_input">Kus?</label>
+					<br />
+					<input type="text" id="where_input" name="location" onfocus="document.getElementById('ui-id-1').style.display='block';" />
+					<span id="input_help">nt. linna</span>
+				</div>
+				
+			</div>
+
+		  <div class="col-xs-1">
+			<div class="div_submit1">
+					<input type="submit" value="" class="subm1" />
+				</div>
+			</form>
+            </div>
+            <div class="col-xs-3">
+            </div>
+		</div>
+		
+		<div class="row">
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-5">
+            <h3><a class="add" id="add_cv" href="#">Lisa CVs</a></h3>
+
+
+            <h3><a class="add" id="add_jobs"  href="{{url_for('company.create_job')}}">Uute töökohtade loomine</a></h3>
+
+ 
+            </div>
+            <div class="col-xs-5">
+           </div>
+      	</div>
+	</div>
+	</div>
+{% endblock %}

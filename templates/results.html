@@ -1,0 +1,142 @@
+{% extends "custom_base.html" %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/local.css') }}">
+
+	{% block title %} Find {{title}} jobs in {{location}} {% endblock %}
+
+
+	{%- block metas %}
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Find and apply to {{title}} jobs in {{location}}">
+    {%- endblock %}
+
+{% block page_content %}
+
+<div class="container">
+	
+	<div class="row">
+		<div class="col-xs-1">
+			
+			
+		</div>
+		
+		<div class="col-xs-8">
+			<div class="r_searcher">
+
+				{% if lang == "ee" %}
+					<form action = "{{ url_for('estonia.searchEstonia') }}" method=post>
+				{% else %}
+						<form action = "{{ url_for('home.search') }}" method=post>
+				{% endif %}
+				<div class="r_div_input1">
+					<label for="r_job_input">What</label>
+					<br />
+					<input type="text" id="r_job_input" name="title" value="{{title}}"/>
+					<span id="input_help">e.g. job, company, title</span>
+				</div>
+		
+				<div class="r_div_input1">
+					<label for="r_where_input">Where</label>
+					<br />
+					<input type="text" id="r_where_input" value="{{location}}" name="location" onfocus="document.getElementById('ui-id-1').style.display='block';" />
+					<span id="input_help">e.g. city, country</span>
+				</div>
+				
+				<div class="div_submit1">
+					<input type="submit" value="" class="r_subm1" />
+				</div>
+			</form>
+		</div>
+			
+			
+		</div>
+		
+		<div class="col-xs-3">
+
+
+		</div>
+		
+		
+		
+	</div>
+
+
+				
+		<div class="row">
+					
+       <div class="col-xs-1">
+       	
+        	
+        	
+        </div>
+
+        <div class="col-xs-8">
+			{% for job in jobs.items %}
+        	<h3 ><a class = "r_title" target="_blank" href="{{job.link}}">{{job.title.title()}}</a></h3>
+			<p class="r_city">  <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{job.location.title()}}</p>
+			<span class = "r_description">{{job.description[0:390]}}</span> .... <br />
+
+			<a id="lisa" class target="_blank" href="{{job.link}}"> More »</a>
+        	{% endfor %}
+
+
+			<br/>
+
+				<span style="color:#91BD5A; font-size:15px; padding-right:20px;">
+					Pages: <ul class="pagination">
+					{%- for page in jobs.iter_pages() %}
+					{% if page %}
+
+      				{% if page != jobs.page %}
+						{% if lang == "ee" %}
+					       <a href="{{ url_for('estonia.result', page=page, title=title.lower(), location=location.lower()) }}">{{ page }}</a>
+						{% else %}
+        					<a href="{{ url_for('home.result', page=page, title=title.lower(), location=location.lower()) }}">{{ page }}</a>
+						{% endif %}
+      				{% else %}
+       				 <strong>{{page}}</strong>
+      				{% endif %}
+    				{% else %}
+      					<span class=ellipsis>…</span>
+
+    				{% endif %}
+
+					</ul>
+  					{%- endfor %}
+
+				</ul>
+				</span>
+
+			<div class="googleAd">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Ziliot Ad Unit-One -->
+			<ins class="adsbygoogle"
+     			style="display:inline-block;width:728px;height:90px"
+     			data-ad-client="ca-pub-8929212152191613"
+     			data-ad-slot="1240925074"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			</div><!-- end div Google ad -->
+
+        </div>
+        
+        <div class="col-xs-3">
+        	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- ziliot ad unit 2 -->
+		<ins class="adsbygoogle"
+			style="display:block"
+			data-ad-client="ca-pub-8929212152191613"
+			data-ad-slot="7373027075"
+			data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+        	
+        	
+        </div>
+        
+        </div>
+
+      </div> <!-- end row -->
+
+{% endblock %}

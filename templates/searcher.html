@@ -1,0 +1,75 @@
+{% extends "custom_base.html" %}
+
+{% block title %} ziliot jobs {{ username }} {% endblock %}
+
+
+{% block page_content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/local.css') }}">
+<div class="container">
+	
+	<div class="row search_jobs">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-8">
+				            <h1>Search Jobs & Get Hired!</h1>
+            </div>
+            <div class="col-xs-2">
+           </div>
+      	</div>
+	<div class="row">
+    
+			
+<div class="col-xs-2">
+            </div>
+<div class="col-xs-3">
+				{% if lang == "ee" %}
+					<form action = "{{ url_for('estonia.search') }}" method=post>
+				{% else %}
+						<form action = "{{ url_for('home.search') }}" method=post>
+				{% endif %}
+				<div id="div_input1" class="div_input1">
+					<label for="job_input">What</label>
+					<br />
+					<input type="text" id="job_input" name="title" />
+					<span id="input_help">e.g. job, company, title</span>
+				</div>
+	</div>
+<div class="col-xs-3">
+
+	
+				<div class="div_input1">
+					<label for="where_input">Where</label>
+					<br />
+					<input type="text" id="where_input" name="location" onfocus="document.getElementById('ui-id-1').style.display='block';" />
+					<span id="input_help">e.g. city, country</span>
+				</div>
+				
+			</div>
+
+		  <div class="col-xs-1">
+			<div class="div_submit1">
+					<input type="submit" value="" class="subm1" />
+				</div>
+			</form>
+            </div>
+            <div class="col-xs-3">
+            </div>
+		</div>
+		
+		<div class="row">
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-5">
+            	<h3><a class="add" id="add_cv" >Add CVs</a></h3>
+            	          
+
+            <h3><a class="add" id="add_jobs" href="{{url_for('company.create_job')}}">Post jobs</a></h3>
+
+ 
+            </div>
+            <div class="col-xs-5">
+           </div>
+      	</div>
+	</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,305 @@
+{% extends "custom_base.html" %}
+
+	{% block title %} Find {{title}} jobs in {{location}} {% endblock %}
+
+
+	{%- block metas %}
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Find and apply to {{title}} jobs in {{location}}">
+ {%- endblock %}
+
+
+{% block page_content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/local.css') }}">
+<div class="container">
+	
+	<div class="row search_jobs">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-8">
+				            <h1>Search Jobs & Get Hired!</h1>
+            </div>
+            <div class="col-xs-2">
+           </div>
+      	</div>
+	<div class="row">
+    
+			
+<div class="col-xs-2">
+            </div>
+<div class="col-xs-3">
+				<form action = "{{ url_for('home.search') }}" method=post>
+				<div id="div_input1" class="div_input1">
+					<label for="job_input">What</label>
+					<br />
+					<input type="text" id="job_input" name="title" value="{{title}}" />
+					<span id="input_help">e.g. job, company, title</span>
+				</div>
+	</div>
+<div class="col-xs-3">
+
+	
+				<div class="div_input1">
+					<label for="where_input">Where</label>
+					<br />
+					<input type="text" id="where_input" name="location" onfocus="document.getElementById('ui-id-1').style.display='block';" value="{{location}}" />
+					<span id="input_help">e.g. city, country</span>
+				</div>
+				
+			</div>
+
+		  <div class="col-xs-1">
+			<div class="div_submit1">
+					<input type="submit" value="" class="subm1" />
+				</div>
+			</form>
+            </div>
+            <div class="col-xs-3">
+            </div>
+		</div>
+		
+		<div class="row">
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-5">
+            	<h3><a class="add" id="add_cv" >Add CVs</a></h3>
+            	          
+
+            <h3><a class="add" id="add_jobs" href="{{url_for('company.create_job')}}">Post jobs</a></h3>
+
+ 
+            </div>
+            <div class="col-xs-5">
+           </div>
+      	</div>
+<div class="container">
+    <div class="page-header">
+    </div>
+    <ul class="timeline">
+        <li>
+          <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">How to use Ziliot job search to find {{title}} avoimet työpaikat {{location}}</h4>
+            </div>
+            <div class="timeline-body">
+              <p>If you are living in {{location}} and in need of a {{title}} job within {{location}} or other areas of Finland. You'll be able to find many jobs in {{location}} by using our job search engine and search using related search terms like "{{title}} avoimet tyopaikat {{location}} or {{title}} tyopaikat {{location}}. You'll need to very specific with search queries to get the best results. </p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Where do we get job search from and how relevant are these results?</h4>
+            </div>
+            <div class="timeline-body">
+              <p>We operate as a job search engine, similar to Google search but we are not Google search. Our search engine goes through various publicly available websites in {{location}} to find information related to {{title}} in {{location}}</p>
+              <p>We also make sure that these results are relevant as possible by filtering outdated and serving {{title}} jobs in {{location}} whose deadlines are still fresh.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Why you should use Ziliot Jobs Search</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Every Job search engine or search engine is different. We do put an effort to show results of jobs in {{location}} which are different from other search engines. This also depends if we've found the results. .</p>
+			  <p> We do work hard to ensure that you get updated results and we want to save your time from spending your valueable time in searching for jobs in {{location}}. We will also be bringing instant notifications when jobs are posted that matches your skills. As such you should follow us as we proceed in giving you a better search experience. </p>
+            </div>
+          </div>
+        </li>
+        
+    </ul>
+</div>
+
+	</div>
+	</div>
+	<style>
+	.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+}
+
+    .timeline:before {
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 3px;
+        background-color: #eeeeee;
+        left: 50%;
+        margin-left: -1.5px;
+    }
+
+    .timeline > li {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li > .timeline-panel {
+            width: 46%;
+            float: left;
+            border: 1px solid #d4d4d4;
+            border-radius: 2px;
+            padding: 20px;
+            position: relative;
+            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        }
+
+            .timeline > li > .timeline-panel:before {
+                position: absolute;
+                top: 26px;
+                right: -15px;
+                display: inline-block;
+                border-top: 15px solid transparent;
+                border-left: 15px solid #ccc;
+                border-right: 0 solid #ccc;
+                border-bottom: 15px solid transparent;
+                content: " ";
+            }
+
+            .timeline > li > .timeline-panel:after {
+                position: absolute;
+                top: 27px;
+                right: -14px;
+                display: inline-block;
+                border-top: 14px solid transparent;
+                border-left: 14px solid #fff;
+                border-right: 0 solid #fff;
+                border-bottom: 14px solid transparent;
+                content: " ";
+            }
+
+        .timeline > li > .timeline-badge {
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.4em;
+            text-align: center;
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            margin-left: -25px;
+            background-color: #999999;
+            z-index: 100;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+        }
+
+            .timeline > li.timeline-inverted > .timeline-panel:before {
+                border-left-width: 0;
+                border-right-width: 15px;
+                left: -15px;
+                right: auto;
+            }
+
+            .timeline > li.timeline-inverted > .timeline-panel:after {
+                border-left-width: 0;
+                border-right-width: 14px;
+                left: -14px;
+                right: auto;
+            }
+
+.timeline-badge.primary {
+    background-color: #2e6da4 !important;
+}
+
+.timeline-badge.success {
+    background-color: #3f903f !important;
+}
+
+.timeline-badge.warning {
+    background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+    background-color: #d9534f !important;
+}
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+
+    .timeline-body > p + p {
+        margin-top: 5px;
+    }
+
+@media (max-width: 767px) {
+    ul.timeline:before {
+        left: 40px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+    }
+
+    ul.timeline > li > .timeline-badge {
+        left: 15px;
+        margin-left: 0;
+        top: 16px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+
+        ul.timeline > li > .timeline-panel:before {
+            border-left-width: 0;
+            border-right-width: 15px;
+            left: -15px;
+            right: auto;
+        }
+
+        ul.timeline > li > .timeline-panel:after {
+            border-left-width: 0;
+            border-right-width: 14px;
+            left: -14px;
+            right: auto;
+        }
+}
+	</style>
+{% endblock %}
